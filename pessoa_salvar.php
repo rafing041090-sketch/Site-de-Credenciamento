@@ -41,7 +41,7 @@ $res_count = $db->query("SELECT COUNT(*) as total FROM pessoas WHERE empresa_id 
 $row_count = $res_count ? $res_count->fetch_assoc() : null;
 $total = $row_count ? intval($row_count['total']) : 0;
 
-$sql_limite = "SELECT t.limite_pessoas, e.QUANTIDADE_ESPACOS, e.quantidade_espacos FROM empresas e LEFT JOIN tipos t ON t.id = e.tipo_id WHERE e.id = $empresa_id LIMIT 1";
+$sql_limite = "SELECT 6 AS limite_pessoas, e.QUANTIDADE_ESPACOS AS QUANTIDADE_ESPACOS FROM empresas e WHERE e.id = $empresa_id";
 $res_limite = $db->query($sql_limite);
 $limite_por_espaco = 6;
 $qtd_espacos = 1;

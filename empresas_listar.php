@@ -71,13 +71,23 @@ if ($db) {
         </thead>
         <tbody>
             <?php if ($result && $total > 0): ?>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <?php $nome_exibir = $row['nome'] ?? $row['razao_social'] ?? $row['nome_fantasia'] ?? 'Empresa #' . $row['id']; ?>
+<?php while ($row = $result->fetch_assoc()): ?>
+    <?php $row = array_change_key_case($row, CASE_LOWER); ?>
+    <?php 
+      $nome_exibir = '';
+      if (!empty($row['nome'])) $nome_exibir = $row['nome'];
+      elseif (!empty($row['nome_fantasia'])) $nome_exibir = $row['nome_fantasia'];
+      elseif (!empty($row['razao_social'])) $nome_exibir = $row['razao_social'];
+      else $nome_exibir = 'Empresa #' . $row['id'];
+
+      $cnpj_exibir = !empty($row['cnpj']) ? $row['cnpj'] : '-';
+      $tel_exibir = !empty($row['telefone']) ? $row['telefone'] : (!empty($row['fone']) ? $row['fone'] : '-');
+    ?>
                     <tr>
                         <td><?= $row['id'] ?></td>
                         <td class="fw-semibold"><?= htmlspecialchars($nome_exibir) ?></td>
-                        <td><?= htmlspecialchars($row['cnpj'] ?? '-') ?></td>
-                        <td><?= htmlspecialchars($row['telefone'] ?? $row['fone'] ?? '-') ?></td>
+                        <td><?= htmlspecialchars($cnpj_exibir) ?></td>
+                        <td><?= htmlspecialchars($tel_exibir) ?></td>
                         <td class="text-end">
                             <div class="btn-group btn-group-sm">
                                 <a href="empresa_form.php?id=<?= $row['id'] ?>" class="btn btn-outline-primary">Editar</a>

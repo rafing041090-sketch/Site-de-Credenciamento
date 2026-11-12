@@ -26,10 +26,8 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_FILES['arquivo'])){
     foreach($linhas as $linha){
       $dados = array_map('trim', explode(';', $linha));
       if(count($dados) < 1) continue;
-      $reg = @array_combine($cab, $dados);
-      if(!$reg){ 
-        $reg = ['nome_fantasia'=>$dados[0]??'', 'razao_social'=>$dados[1]??'', 'tipo_cadastro'=>$dados[2]??''];
-      }
+     $dados = array_slice(array_pad($dados, count($cab), ''), 0, count($cab));
+     $reg = array_combine($cab, $dados);}
       $nome_fantasia = $db->real_escape_string($reg['nome_fantasia']?? '');
       $razao = $db->real_escape_string($reg['razao_social']?? '');
       $tipo_nome = strtolower(trim($reg['tipo_cadastro']?? 'empresa'));

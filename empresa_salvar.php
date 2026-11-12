@@ -18,7 +18,6 @@ $telefone      = trim(strip_tags($_POST['telefone'] ?? ''));
 $email         = trim(strip_tags($_POST['email'] ?? ''));
 $tipo_id       = intval($_POST['tipo_id'] ?? 0);
 $qtd_espacos   = intval($_POST['quantidade_espacos'] ?? 0);
-$ano           = 2026;
 
 if (!empty($nome_fantasia) && $db) {
     if ($id > 0) {
@@ -39,8 +38,8 @@ if (!empty($nome_fantasia) && $db) {
             writeRegistroLog("{$user_id};ALTERACAO;EMPRESAS;".date('Y-m-d H:i:s').";ID={$id},NOME_FANTASIA={$nome_fantasia}");
         }
     } else {
-        $stmt = $db->prepare("INSERT INTO empresas (ano, nome_fantasia, razao_social, cnpj, telefone, email, tipo_id, quantidade_espacos) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssssii", $ano, $nome_fantasia, $razao_social, $cnpj, $telefone, $email, $tipo_id, $qtd_espacos);
+        $stmt = $db->prepare("INSERT INTO empresas (nome_fantasia, razao_social, cnpj, telefone, email, tipo_id, quantidade_espacos) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssii", $nome_fantasia, $razao_social, $cnpj, $telefone, $email, $tipo_id, $qtd_espacos);
         $stmt->execute();
         $novo_id = $stmt->insert_id;
 
