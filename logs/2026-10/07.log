@@ -1,0 +1,5 @@
+7;LOGIN;LOGIN;2026-10-07 16:11:34
+7;INCLUSAO;EMPRESAS;2026-10-07 16:35:12;ID=7,NOME_FANTASIA=Farol Software
+7;EXCLUSAO;EMPRESAS;2026-10-07 16:35:19;id=5,nome_fantasia=Farol Software,razao_social=,cnpj=,telefone=,email=,endereco=,quantidade_espacos=,tipo_id=1,excluido_em=,ano=2026,criado_em=2026-10-05 09:00:12
+7;INCLUSAO;PESSOAS;2026-10-07 17:07:44;
+7;EXCLUSAO;PESSOAS;2026-10-07 17:13:43;id=11,empresa_id=7,nome=jorge,email=,telefone=,ingresso_permanente=N,foto=,cpf=,documento=,cargo_id=9,excluido_em=,atualizado_em=2026-10-07 12:07:45,criado_em=2026-10-07 12:07:45

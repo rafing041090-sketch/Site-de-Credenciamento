@@ -1,0 +1,4 @@
+1;LOGIN;LOGIN;2026-11-09 09:17:10
+1;INCLUSAO;PESSOAS;2026-11-09 10:42:27;
+1;ALTERACAO;PESSOAS;2026-11-09 10:42:33;;
+1;EXCLUSAO;PESSOAS;2026-11-09 10:42:36;id=3,nome=teste,documento=,telefone=,cpf=,empresa_id=3,cargo_id=1,excluido_em=
